@@ -1,0 +1,15 @@
+:root {
+  --ghost-white: #e8e9f3ff;
+  --tea-green: #c3d3b1ff;
+  --olivine: #9ebd6eff;
+  --ut-orange: #ff8200ff;
+  --brown: #985a1fff;
+  --jet-black: #30323dff;
+  --raisin-black: #272635ff;
+}
+
+body {
+  background-color: var(--ghost-white);
+  color: var(--raisin-black);
+}
+

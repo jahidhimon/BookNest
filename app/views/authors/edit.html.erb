@@ -1,0 +1,10 @@
+<% content_for :title, "Editing author" %>
+
+<%= render "form", author: @author, title: "Edit Author" %>
+
+<br>
+
+<div>
+  <%= link_to "Show this author", @author %> |
+  <%= link_to "Back to authors", authors_path %>
+</div>

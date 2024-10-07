@@ -13,3 +13,152 @@
  *= require_tree .
  *= require_self
  */
+
+.container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  min-height: 100vh;
+
+  & > * {
+    padding-inline: 1rem;
+  }
+}
+
+nav {
+  background-color: var(--ghost-white);
+  color: var(--jet-black);
+  height: 4rem;
+  display: flex;
+  border-bottom: 1px solid var(--olivine);
+  justify-content: space-between;
+  border-radius: 3%;
+  align-items: center;
+  margin-bottom: 5px;
+
+  & .header > a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+
+    & span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  }
+
+  & .menu {
+    a + a {
+      margin-left: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  & .access {
+    & a {
+      padding: 0.4rem 0.6rem;
+      border-radius: 7%;
+      background-color: var(--tea-green);
+      color: var(--raisin-black);
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        background-color: var(--olivine);
+      }
+    }
+
+    a + a {
+      margin-left: 10px;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-center;
+  
+  & form {
+    max-width: 400px;
+    width: 100%;
+    margin-inline: auto;
+
+    padding: 1rem;
+    border-radius: 1%;
+
+    h2 {
+      font-weight: 500;
+      margin-inline: auto;
+      width: fit-content;
+      margin-bottom: 20px;
+    }
+
+    & .field {
+      width: 100%;
+      & label {
+        font-size: 0.8rem;
+      }
+      & input, textarea, select {
+        width: 100%;
+        border: 1px solid var(--olivine);
+        padding: 8px 10px;
+      }
+
+      & input[type="file"] {
+        display: none;
+      }
+
+      & .custom_file_upload {
+        border: 1px solid var(--olivine);
+        padding: 10px 10px;
+        display: flex;
+        gap: 10px;
+        cursor: pointer;
+        width: 100%;
+        align-content: center;
+        align-items: center;
+        font-size: 0.9rem;
+        font-weight: 500;
+
+        & svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    & .field + .field {
+      margin-top: 7px;
+    }
+
+    .actions {
+      margin: 10px 0;  
+      
+      input {
+        padding: 8px 16px;
+        background-color: var(--olivine);
+        border-radius: 7px;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+
+        &:hover {
+          color: var(--ghost-white);
+          background-color: var(--jet-black);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<nav>
+  <div class="header">
+    <%= link_to root_path do %>
+      <img src="/icon.png" alt="BookNest Icon">
+      <span class="title">BookNest</span>
+    <% end %>
+  </div>
+
+  <div class="menu">
+    <%= link_to "Browse", books_path %>
+    <%= link_to "Authors", authors_path %>
+    <%= link_to "Publishers", publishers_path %>
+  </div>
+
+  <div class="access">
+    <%= link_to "Sign In", new_user_session_path %>
+    <%= link_to "Signup", new_user_registration_path %>
+  </div>
+</nav>

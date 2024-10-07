@@ -1,0 +1,40 @@
+<div id="<%= dom_id book %>">
+  <% if book.cover.attached? %>
+    <%= image_tag book.cover.variant(:thumb) %>
+  <% end %>
+  <p>
+    <strong>Isbn:</strong>
+    <%= book.ISBN %>
+  </p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= book.title %>
+  </p>
+
+  <p>
+    <strong>Edition:</strong>
+    <%= book.edition %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= book.category %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= book.price %>
+  </p>
+
+  <p>
+    <strong>Author:</strong>
+    <%= book.author_id %>
+  </p>
+
+  <p>
+    <strong>Publisher:</strong>
+    <%= book.publisher_id %>
+  </p>
+
+</div>

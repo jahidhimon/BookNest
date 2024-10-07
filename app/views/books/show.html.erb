@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<% if @book.cover.attached? %>
+  <%= image_tag @book.cover.variant(:preview), alt: "book cover" %>
+<% end %>
+
+<div>
+  <%= link_to "Edit this book", edit_book_path(@book) %> |
+  <%= link_to "Back to books", books_path %>
+
+  <%= button_to "Destroy this book", @book, method: :delete %>
+</div>
