@@ -20,7 +20,7 @@
   margin-inline: auto;
   min-height: 100vh;
 
-  & > * {
+  &>* {
     padding-inline: 1rem;
   }
 }
@@ -36,7 +36,7 @@ nav {
   align-items: center;
   margin-bottom: 5px;
 
-  & .header > a {
+  & .header>a {
     display: flex;
     justify-content: space-between;
     text-decoration: none;
@@ -49,36 +49,59 @@ nav {
   }
 
   & .menu {
-    a + a {
-      margin-left: 1rem;
+    & .link+.link {
+      margin-left: 0.5rem;
     }
 
-    a {
-      text-decoration: none;
-      font-weight: 500;
+    & .link {
+      height: 100%;
+      display: inline-block;
+      align-content: center;
+      padding-inline: 0.5rem;
+
+      a {
+        text-decoration: none;
+        font-weight: 500;
+      }
 
       &:hover {
-        text-decoration: underline;
+        box-shadow: inset 0 -3px 0 var(--tea-green);
+      }
+
+      &.active {
+        box-shadow: inset 0 -3px 0 var(--olivine);
       }
     }
+
+    height: 100%;
   }
 
   & .access {
-    & a {
+    display: flex;
+
+    &>a,
+    form>button {
       padding: 0.4rem 0.6rem;
       border-radius: 7%;
       background-color: var(--tea-green);
       color: var(--raisin-black);
       text-decoration: none;
       font-weight: 600;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
 
       &:hover {
         background-color: var(--olivine);
       }
     }
 
-    a + a {
-      margin-left: 10px;
+    &>form>button {
+      padding: 0.6rem 0.6rem;
+    }
+
+    &>*:first-child {
+      margin-right: 10px;
     }
   }
 }
@@ -87,7 +110,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-content: flex-center;
-  
+
   & form {
     max-width: 400px;
     width: 100%;
@@ -105,10 +128,14 @@ nav {
 
     & .field {
       width: 100%;
+
       & label {
         font-size: 0.8rem;
       }
-      & input, textarea, select {
+
+      & input,
+      textarea,
+      select {
         width: 100%;
         border: 1px solid var(--olivine);
         padding: 8px 10px;
@@ -137,13 +164,13 @@ nav {
       }
     }
 
-    & .field + .field {
+    & .field+.field {
       margin-top: 7px;
     }
 
     .actions {
-      margin: 10px 0;  
-      
+      margin: 10px 0;
+
       input {
         padding: 8px 16px;
         background-color: var(--olivine);
@@ -152,6 +179,7 @@ nav {
         text-align: center;
         text-decoration: none;
         border: none;
+        transition: all 0.3s ease;
 
         &:hover {
           color: var(--ghost-white);
@@ -159,6 +187,54 @@ nav {
           cursor: pointer;
         }
       }
+    }
+  }
+}
+
+.toasts {
+  position: fixed;
+  bottom: 0;
+  width: 70%;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  padding: 1rem;
+
+  &>.toast {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 20rem;
+    border-radius: 10px;
+    padding: 1rem;
+    opacity: 70;
+    margin-bottom: 1rem;
+
+    &.hidden {
+      display: none;
+    }
+
+    &.success {
+      background-color: rgb(190, 242, 100);
+    }
+
+    &.suggeston {
+      background-color: rgb(250, 204, 21);
+    }
+
+    &.notice {
+      background-color: rgb(134, 239, 172);
+    }
+
+    &.alert {
+      background-color: rgb(252, 165, 165);
+    }
+
+    &>.close {
+      font-size: 1.5rem;
+      text-decoration: none;
     }
   }
 }
