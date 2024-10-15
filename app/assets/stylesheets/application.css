@@ -247,6 +247,7 @@ nav {
 
   &>.book {
     height: 250px;
+    max-width: 200px;
     border: 1px solid var(--tea-green);
     border-radius: 5px;
 
@@ -430,10 +431,30 @@ nav {
 
 .search {
   form {
+    margin: 2rem 0;
+
+    width: 90%;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    input {
+      padding: 1rem;
+      width: 90%;
+      border-radius: 10px;
+      border: 1px solid var(--tea-green);
+    }
+
     button {
-      width: 4rem;
-      height: 3rem;
-      font-size: 2rem;
+      border: none;
+      padding: 0.7rem;
+      cursor: pointer;
+      border: 1px solid var(--tea-green);
+      border-radius: 5px;
+      font-size: 1.5rem;
+      text-align: center;
+      align-items: center;
     }
   }
 }

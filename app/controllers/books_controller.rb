@@ -4,8 +4,13 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @latest = Book.order(:created_at).limit(10)
-    @popular = Book.order(:visits).limit(10)
+    if params[:commit] == "search"
+      @section_title = "Showing Results for '#{params[:query]}'"
+      @books = Book.where("title like ?", "%#{params[:query]}%")
+    else
+      @section_title = "All Books"
+    @books = Book.all.order(created_at: :desc)
+    end
   end
 
   # GET /books/1 or /books/1.json
