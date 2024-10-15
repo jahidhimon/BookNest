@@ -4,11 +4,17 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @latest = Book.order(:created_at).limit(10)
+    @popular = Book.order(:visits).limit(10)
   end
 
   # GET /books/1 or /books/1.json
   def show
+    @author = @book.author
+    @similar = Book.where(category: @book.category).where.not(id: @book.id).order(visits: :desc).limit(4)
+    @author_books = @author.books.where.not(id: @book.id).order(visits: :desc).limit(4)
+
+    @book.update(visits: @book.visits+1)
   end
 
   # GET /books/new
@@ -72,6 +78,6 @@ class BooksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_params
-    params.require(:book).permit(:ISBN, :title, :edition, :category, :price, :author_id, :publisher_id, :cover)
+    params.require(:book).permit(:isbn, :title, :edition, :category, :description, :author_id, :publisher_id, :cover)
   end
 end

@@ -8,12 +8,34 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-100.times do |i|
+10.times do |i|
   puts "creating author no #{i}"
-  Author.create(name: Faker::Name.name, age: Random.rand(27..71), description: Faker::Lorem.paragraph(sentence_count: 3))
+  Author.create(
+    name: Faker::Name.name,
+    age: Random.rand(27..71),
+    description: Faker::Lorem.paragraph(sentence_count: 30))
+end
+
+10.times do |i|
+  puts "creating publisher no #{i}"
+  Publisher.create(
+    address: Faker::Address.full_address,
+    name: Faker::Book.publisher,
+    description: Faker::Lorem.paragraph(sentence_count: 3),
+  )
 end
 
 100.times do |i|
-  puts "creating author no #{i}"
-  Publisher.create(name: Faker::Book.publisher, year_of_publication: Random.rand(1990..2024))
+  puts "creating book no #{i}"
+  Book.create(
+    title: Faker::Book.title,
+    isbn: "9780066620992",
+    edition: "1",
+    available: true,
+    year_of_publication: Random.rand(1990..2024),
+    category: Faker::Book.genre,
+    description: Faker::Lorem.paragraph(sentence_count: 50),
+    author_id: Random.rand(1...10),
+    publisher_id: Random.rand(1...10)
+  )
 end

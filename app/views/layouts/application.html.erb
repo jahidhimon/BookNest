@@ -16,12 +16,11 @@
   </head>
   <body>
     <div class="container">
-      <%= render "shared/navbar" %>
       <%= render "shared/toasts" %>
+      <%= render "shared/navbar" %>
       <main>
         <%= yield %>
       </main>
-      <%= render "shared/footer" %>
     </div>
   </body>
 </html>

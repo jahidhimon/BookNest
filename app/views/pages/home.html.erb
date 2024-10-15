@@ -1,5 +1,32 @@
-<div class="home">
-  <% if user_signed_in? %>
-    <span class="welcome">Welcome, <%= current_user.name %></span>
-  <% end %>
+<% if user_signed_in? %>
+  <span class="welcome">Welcome, <%= current_user.name %></span>
+  <div class="hr"></div>
+<% end %>
+
+<div class="section">
+  <div class="section-title">Latest Books</div>
+  <div class="books">
+    <%= render @latest %>
+
+    <div class="see-more">
+      <%= link_to books_path do %>
+        <div>See more</div>
+        <div class="arrow">&#10132;</div>
+      <% end %>
+    </div>
+  </div> 
+</div>
+
+<div class="section">
+  <div class="section-title">Popular Books</div>
+  <div class="books">
+    <%= render @popular %>
+
+    <div class="see-more">
+      <%= link_to books_path do %>
+        <div>See more</div>
+        <div class="arrow">&#10132;</div>
+      <% end %>
+    </div>
+  </div>
 </div>

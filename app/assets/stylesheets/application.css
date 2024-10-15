@@ -192,25 +192,19 @@ nav {
 }
 
 .toasts {
-  position: fixed;
-  bottom: 0;
-  width: 70%;
+  width: 100%;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  z-index: 2;
-  padding: 1rem;
 
   &>.toast {
     display: flex;
-    justify-content: space-between;
+    border-radius: 5px;
     align-items: center;
     width: 100%;
-    max-width: 20rem;
-    border-radius: 10px;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     opacity: 70;
-    margin-bottom: 1rem;
+    justify-content: space-between;
 
     &.hidden {
       display: none;
@@ -233,8 +227,213 @@ nav {
     }
 
     &>.close {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
+      color: inherit;
       text-decoration: none;
+    }
+  }
+}
+
+.welcome {
+  font-size: 1.7rem;
+  line-height: 1.8;
+}
+
+.books {
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+
+  &>.book {
+    height: 250px;
+    border: 1px solid var(--tea-green);
+    border-radius: 5px;
+
+    &>a {
+      text-decoration: none;
+      display: flex;
+      height: 100%;
+      padding: 0.5rem;
+      flex-direction: column;
+      text-align: center;
+      justify-content: space-between;
+
+      &>svg, img {
+        margin-inline: auto;
+        object-fit: contain;
+      }
+
+      &>.title {
+        height: 50px;
+      }
+    }
+  }
+  &>.see-more {
+    height: 250px;
+    border: 1px solid var(--tea-green);
+    border-radius: 5px;
+
+    &>a {
+      text-decoration: none;
+      height: 100%;
+      align-items: center;
+      text-align: center;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+
+      &>.arrow {
+        font-size: 3rem;
+        width: fit-content;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.section {
+  &>.hr {
+    border-bottom: 0.5px solid var(--tea-green);
+    margin: 1rem 0;
+  }
+
+  & .section-title {
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+.show-book {
+  padding: 1rem 0;
+  display: flex;
+  gap: 2rem;
+
+  &>.hero {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+
+    &>* + * {
+      margin-top: 20px;
+    }
+
+    &>* {
+      margin-inline: auto;
+    }
+
+    &>img, svg {
+      width: 300px;
+      object-fit: contain;
+    }
+
+    &>.btn {
+      padding: 0.5rem 1rem;
+      text-decoration: none; 
+      border-radius: 5px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      color: inherit;
+      width: 100%;
+      max-width: 300px;
+
+      &.request {
+        outline: 1px solid var(--olivine);
+      }
+      &.wishlist {
+        background-color: var(--olivine);
+      }
+      &.disabled {
+        outline: none;
+        border: none;
+        background-color: var(--gray-goose);
+        cursor: unset;
+      }
+    }
+
+  }
+
+  &>.details {
+    width: 65%;
+    background-color: var(--oliivne);
+    margin-top: 20px;
+
+    & > * + * {
+      margin-top: 20px;
+    }
+
+    &>.title-section  {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      &>.title {
+        font-size: 2.3rem;
+        font-weight: 800;
+      }
+
+      &>.share-btn {
+        text-decoraton: none;
+        color: inherit;
+        height: 100%;
+        svg {
+          height:2rem;
+          width:2rem;
+        }
+      }
+    }
+
+    &>.meta-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &>.author-name {
+        font-size: 1.7rem;
+      }
+
+      &>.genre {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--french-gray);
+      }
+    }
+
+    &>.rating {
+      font-size: 1.3rem;
+    }
+
+    &>.description {
+      &>.title {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      &>.content {
+        font-size: 1.2rem;
+        color: var(--french-gray);
+      }
+    }
+
+    &>.book-section {
+      &>.title {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.search {
+  form {
+    button {
+      width: 4rem;
+      height: 3rem;
+      font-size: 2rem;
     }
   }
 }

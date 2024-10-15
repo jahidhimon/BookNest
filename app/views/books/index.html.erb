@@ -1,16 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Books" %>
-
-<h1>Books</h1>
-
-<div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to "Show this book", book %>
-    </p>
+<div class="search">
+  <%= form_with url: user_book_search_path, method: :get do |form| %>
+    <%= form.search_field :query %>
+    <%= form.button nil, type: "submit" do %>
+      &#128269
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New book", new_book_path %>

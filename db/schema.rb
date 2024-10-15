@@ -48,11 +48,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_06_201548) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.string "ISBN"
-    t.string "title"
-    t.string "edition"
-    t.string "category"
-    t.float "price"
+    t.string "isbn", null: false
+    t.string "title", null: false
+    t.string "edition", null: false
+    t.string "year_of_publication", null: false
+    t.string "category", null: false
+    t.text "description", null: false
+    t.boolean "available", null: false
+    t.integer "visits", default: 0, null: false
     t.integer "author_id", null: false
     t.integer "publisher_id", null: false
     t.datetime "created_at", null: false
@@ -62,8 +65,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_06_201548) do
   end
 
   create_table "publishers", force: :cascade do |t|
-    t.string "year_of_publication"
-    t.string "name"
+    t.string "description", null: false
+    t.string "address", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
+
+  get "user/books/search" => "books#user-search", as: "user_book_search"
 end
