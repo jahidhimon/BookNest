@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lendings
   devise_for :users
   resources :books
   resources :authors

@@ -4,9 +4,9 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    if params[:commit] == "search"
+    if params[:commit] == "search" && params[:query] != ""
       @section_title = "Showing Results for '#{params[:query]}'"
-      @books = Book.where("title like ?", "%#{params[:query]}%")
+      @books = Book.where("title like ?", "%#{params[:query]}%").order(visits: :desc)
     else
       @section_title = "All Books"
     @books = Book.all.order(created_at: :desc)

@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   validates :name, :mobile_phone, presence: true
 
+  has_many :lendings
+
+  has_many :books, through: :lendings
+
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_06_201548) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_16_074635) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -64,6 +64,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_06_201548) do
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
+  create_table "lendings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.datetime "return_date"
+    t.datetime "returned_date"
+    t.integer "penalty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_lendings_on_book_id"
+    t.index ["user_id"], name: "index_lendings_on_user_id"
+  end
+
   create_table "publishers", force: :cascade do |t|
     t.string "description", null: false
     t.string "address", null: false
@@ -95,4 +107,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_06_201548) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "authors"
   add_foreign_key "books", "publishers"
+  add_foreign_key "lendings", "books"
+  add_foreign_key "lendings", "users"
 end

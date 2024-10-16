@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @lending %>
+
+<div>
+  <%= link_to "Edit this lending", edit_lending_path(@lending) %> |
+  <%= link_to "Back to lendings", lendings_path %>
+
+  <%= button_to "Destroy this lending", @lending, method: :delete %>
+</div>
