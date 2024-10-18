@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_16_074635) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_16_102205) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -67,13 +67,23 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_16_074635) do
   create_table "lendings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "book_id", null: false
-    t.datetime "return_date"
-    t.datetime "returned_date"
-    t.integer "penalty"
+    t.date "return_date", null: false
+    t.date "returned_date"
+    t.integer "penalty", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_lendings_on_book_id"
     t.index ["user_id"], name: "index_lendings_on_user_id"
+  end
+
+  create_table "librarians", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_librarians_on_email", unique: true
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -96,7 +106,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_16_074635) do
     t.string "unconfirmed_email"
     t.string "name"
     t.string "mobile_phone"
-    t.integer "penalty"
+    t.integer "penalty", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

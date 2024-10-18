@@ -1,42 +1,34 @@
-<%= form_with(model: lending) do |form| %>
-  <% if lending.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(lending.errors.count, "error") %> prohibited this lending from being saved:</h2>
+<div class="form">
+  <%= form_with(model: lending) do |form| %>
+    <% if lending.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(lending.errors.count, "error") %> prohibited this lending from being saved:</h2>
 
-      <ul>
-        <% lending.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% lending.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :user_id, style: "display: block" %>
+      <%= form.select :user_id, options_for_select(@users) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :book_id, style: "display: block" %>
+      <%= form.select :book_id, options_for_select(@books) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :returned_date, style: "display: block" %>
+      <%= form.date_field :returned_date %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :book_id, style: "display: block" %>
-    <%= form.text_field :book_id %>
-  </div>
-
-  <div>
-    <%= form.label :return_date, style: "display: block" %>
-    <%= form.datetime_field :return_date %>
-  </div>
-
-  <div>
-    <%= form.label :returned_date, style: "display: block" %>
-    <%= form.datetime_field :returned_date %>
-  </div>
-
-  <div>
-    <%= form.label :penalty, style: "display: block" %>
-    <%= form.number_field :penalty %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

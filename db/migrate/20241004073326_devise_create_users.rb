@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.2]
 
       t.string :name
       t.string :mobile_phone
-      t.integer :penalty
+      t.integer :penalty, null: false, default: 0
 
       t.timestamps null: false
     end

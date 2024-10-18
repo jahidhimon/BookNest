@@ -7,8 +7,8 @@ class Book < ApplicationRecord
   has_many :lenders, through: :lendings, source: :user
 
   has_one_attached :cover do |attachable|
-    attachable.variant :profile, resize_to_limit: [ 400, 400 ]
-    attachable.variant :preview, resize_to_limit: [ 200, 200 ]
-    attachable.variant :thumb, resize_to_limit: [ 50, 50 ]
+    attachable.variant :profile, resize_to_limit: [ 400, 400 ], preprocessed: true
+    attachable.variant :preview, resize_to_limit: [ 200, 200 ], preprocessed: true
+    attachable.variant :thumb, resize_to_limit: [ 70, 70 ], preprocessed: true
   end
 end

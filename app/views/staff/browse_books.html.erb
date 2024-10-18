@@ -1,0 +1,16 @@
+<div class="search">
+  <%= form_with url: books_path, method: :get do |form| %>
+    <%= form.text_field :query %>
+    <%= form.button type="submit", name: "commit", value: "search" do %>
+      &#128269;
+    <% end %>
+  <% end %>
+</div>
+
+<div class="section">
+  <div class="section-title"><%= @section_title %></div>
+
+  <div class="books">
+    <%= render @books %>
+  </div>
+</div>

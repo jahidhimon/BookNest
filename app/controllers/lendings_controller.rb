@@ -1,13 +1,19 @@
 class LendingsController < ApplicationController
+  before_action :authenticate_librarian!
+
   before_action :set_lending, only: %i[ show edit update destroy ]
+  before_action :set_selections, only: %i[ new edit ]
 
   # GET /lendings or /lendings.json
   def index
-    @lendings = Lending.all
+    @lendings = Lending.includes(book: :author).includes(:user).order(:returned_date)
   end
 
   # GET /lendings/1 or /lendings/1.json
   def show
+    @book = @lending.book
+    @author = @book.author
+    @user = @lending.user
   end
 
   # GET /lendings/new
@@ -23,8 +29,13 @@ class LendingsController < ApplicationController
   def create
     @lending = Lending.new(lending_params)
 
+    @lending.return_date = DateTime.now + 7.days
+
+
     respond_to do |format|
       if @lending.save
+        Book.find(lending_params[:book_id]).update(available: false)
+
         format.html { redirect_to @lending, notice: "Lending was successfully created." }
         format.json { render :show, status: :created, location: @lending }
       else
@@ -38,6 +49,9 @@ class LendingsController < ApplicationController
   def update
     respond_to do |format|
       if @lending.update(lending_params)
+
+        if lending_params[]
+        end
         format.html { redirect_to @lending, notice: "Lending was successfully updated." }
         format.json { render :show, status: :ok, location: @lending }
       else
@@ -57,14 +71,28 @@ class LendingsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lending
-      @lending = Lending.find(params[:id])
-    end
+  def return
+    @lending = Lending.find(params[:id])
 
-    # Only allow a list of trusted parameters through.
-    def lending_params
-      params.require(:lending).permit(:user_id, :book_id, :return_date, :returned_date, :penalty)
-    end
+    @lending.book.update(available: true)
+    @lending.update(returned_date: Date.today)
+
+    redirect_to lending_path(@lending), notice: "The book was successfully returned." 
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lending
+    @lending = Lending.find(params[:id])
+  end
+
+  def set_selections
+    @users = User.all.where("penalty = 0").map { |user| [ user.name, user.id ] }
+    @books = Book.all.where(available: true).map { |book| [ book.title, book.id ] }
+  end
+
+  # Only allow a list of trusted parameters through.
+  def lending_params
+    params.require(:lending).permit(:user_id, :book_id, :returned_date)
+  end
 end

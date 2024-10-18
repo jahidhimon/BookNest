@@ -39,3 +39,23 @@ end
     publisher_id: Random.rand(1...10)
   )
 end
+
+10.times do |i|
+  puts "creating users no #{i}"
+  User.create(
+    name: Faker::Name.name,
+    password: "helloworld",
+    password_confirmation: "helloworld",
+    email: Faker::Internet.email,
+    mobile_phone: "01629599965"
+  )
+end
+
+User.create(
+  name: "Jahid Hasan",
+  password: "helloworld",
+  password_confirmation: "helloworld",
+  email: "jahid1794@gmail.com",
+  mobile_phone: "299292"
+)
+User.last.confirm

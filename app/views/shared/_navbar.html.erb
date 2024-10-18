@@ -1,28 +1,45 @@
 <nav>
   <div class="header">
-    <%= link_to root_path do %>
+    <%= link_to librarian_signed_in? ? dashboard_path : root_path do %>
       <img src="/icon.png" alt="BookNest Icon">
       <span class="title">BookNest</span>
     <% end %>
   </div>
   <div class="menu">
-    <div class="link <%= "active" if request.path == books_path %>">
-      <%= link_to "Browse", books_path %>
-    </div>
-    <div class="link <%= "active" if request.path == authors_path %>">
-      <%= link_to "Authors", authors_path %>
-    </div>
-    <div class="link <%= "active" if request.path == publishers_path %>" >
-      <%= link_to "Publishers", publishers_path %>
-    </div>
+    <%- if librarian_signed_in? %>
+      <div class="link <%= "active" if request.path == browse_books_path %>">
+        <%= link_to "Books", browse_books_path %>
+      </div>
+      <div class="link <%= "active" if request.path == dashboard_path %>">
+        <%= link_to "Dashboard", dashboard_path %>
+      </div>
+      <div class="link <%= "active" if request.path == users_path %>">
+        <%= link_to "Users", users_path %>
+      </div>
+    <% else %>
+      <div class="link <%= "active" if request.path == books_path %>">
+        <%= link_to "Browse", books_path %>
+      </div>
+      <div class="link <%= "active" if request.path == authors_path %>">
+        <%= link_to "Authors", authors_path %>
+      </div>
+      <div class="link <%= "active" if request.path == publishers_path %>" >
+        <%= link_to "Publishers", publishers_path %>
+      </div>
+    <% end %>
   </div>
   <div class="access">
-    <% if user_signed_in? %>
-      <%= link_to "Profile", "#" %>
-      <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+    <%- if librarian_signed_in? %>
+      <%= link_to "Payment", "#" %>
+      <%= button_to "Logout", destroy_librarian_session_path, method: :delete %>
     <% else %>
-      <%= link_to "Sign In", new_user_session_path %>
-      <%= link_to "Signup", new_user_registration_path %>
+      <% if user_signed_in? %>
+        <%= link_to "Profile", user_profile_path %>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %>
+        <%= link_to "Signup", new_user_registration_path %>
+      <% end %>
     <% end %>
   </div>
 </nav>

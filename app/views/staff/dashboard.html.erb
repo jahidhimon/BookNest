@@ -1,0 +1,47 @@
+<div class="dashboard">
+  <a class="currently-lent" href="<%= lendings_path %>">
+    <div class="title">Currently Lent</div>
+    <div class="value"><%= @currently_lent %></div>
+    <div></div>
+  </a>
+  <a class="total-available-books" href="<%= browse_books_path %>">
+    <div class="title">Available Books</div>
+    <div class="value"><%= @available_books %></div>
+    <div></div>
+  </a>
+  <a class="total-books" href="<%= browse_books_path %>">
+    <div class="title">Total Books</div>
+    <div class="value"><%= @total_books %></div>
+    <div></div>
+  </a>
+  <a class="total-book-returned" href="<%= lendings_path %>">
+    <div class="title">Total Returned</div>
+    <div class="value"><%= @total_returned_books %></div>
+    <div></div>
+  </a>
+  <a class="total-book-given" href="<%= lendings_path %>">
+    <div class="title">Total Checkout</div>
+    <div class="value"><%= @total_checkouts %></div>
+    <div></div>
+  </a>
+  <a class="total-penalty" href="<%= lendings_path %>">
+    <div class="title">Remaining Penalties</div>
+    <div class="value"><%= @total_penalties %></div>
+    <div></div>
+  </a>
+  <a class="total-users" href="<%= users_path %>">
+    <div class="title">Users</div>
+    <div class="value"><%= @total_users %></div>
+    <div></div>
+  </a>
+  <a class="total-authors" href="<%= authors_path %>">
+    <div class="title">Authors</div>
+    <div class="value"><%= @total_authors %></div>
+    <div></div>
+  </a>
+  <a class="total-publications" href="<%= publishers_path %>">
+    <div class="title">Publishers</div>
+    <div class="value"><%= @total_publishers %></div>
+    <div></div>
+  </a>
+</div>
