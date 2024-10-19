@@ -31,10 +31,13 @@ class LendingsController < ApplicationController
 
     @lending.return_date = DateTime.now + 7.days
 
-
     respond_to do |format|
-      if @lending.save
-        Book.find(lending_params[:book_id]).update(available: false)
+      if @lending.valid?
+        Lending.transaction do
+          @lending.save!
+          @book = Book.find(lending_params[:book_id])
+          @book.update!(available: false)
+        end
 
         format.html { redirect_to @lending, notice: "Lending was successfully created." }
         format.json { render :show, status: :created, location: @lending }
@@ -74,10 +77,12 @@ class LendingsController < ApplicationController
   def return
     @lending = Lending.find(params[:id])
 
-    @lending.book.update(available: true)
-    @lending.update(returned_date: Date.today)
+    Lending.transaction do
+      @lending.book.update(available: true)
+      @lending.update(returned_date: Date.today)
+    end
 
-    redirect_to lending_path(@lending), notice: "The book was successfully returned." 
+    redirect_to lending_path(@lending), notice: "The book was successfully returned."
   end
 
   private

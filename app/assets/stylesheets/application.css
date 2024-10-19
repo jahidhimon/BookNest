@@ -384,7 +384,9 @@ nav {
         cursor: unset;
       }
     }
-
+    form {
+      width: 100%;
+    }
   }
 
   &>.details {
@@ -790,5 +792,22 @@ nav {
     margin-left: 0.3rem;
     text-wrap: stable; 
     padding: 1rem 0;
+  }
+}
+
+button.delete {
+  outline: 1px solid red;
+  width: 100%;
+  border: none;
+  color: red;
+  padding: 0.5rem 1rem;
+  text-decoration: none; 
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: red;
+    color: white;
   }
 }
