@@ -1,16 +1,25 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Authors" %>
-
-<h1>Authors</h1>
-
-<div id="authors">
-  <% @authors.each do |author| %>
-    <%= render author %>
-    <p>
-      <%= link_to "Show this author", author %>
-    </p>
+<div class="search">
+  <%= form_with url: authors_path, method: :get do |form| %>
+    <%= form.text_field :query %>
+    <%= form.button type="submit", name: "commit", value: "search" do %>
+      &#128269;
+    <% end %>
   <% end %>
 </div>
 
-<%= link_to "New author", new_author_path %>
+<div class="section">
+  <div class="section-title">
+    <div class="title"><%= @section_title %></div>
+    <%- if librarian_signed_in? %>
+      <%= link_to "New Author", new_author_path %>
+    <% end %>
+  </div>
+</div>
+
+<div class="entities">
+  <% @authors.each do |author| %>
+    <%= link_to author_path(author), class: "entity" do %>
+        <%= author.name %>
+    <% end %>
+  <% end %>
+</div>

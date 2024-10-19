@@ -25,5 +25,16 @@ class StaffController < ApplicationController
   end
 
   def users
+    if params[:commit] == "search" && params[:query] != ""
+      @section_title = "Showing Results for '#{params[:query]}'"
+      @users = User.where("name like ?", "%#{params[:query]}%").order(name: :desc)
+    else
+      @section_title = "All Users"
+      @users = User.all.order(created_at: :desc)
+    end
+  end
+
+  def user
+    @user = User.find(params[:id])
   end
 end

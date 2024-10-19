@@ -12,7 +12,11 @@
       <a href="#" class="btn disabled" disabled>Not Available</a>
     <% end %>
 
-    <a href="#" class="btn wishlist <%= user_signed_in? ? '': 'disabled'%>">Add to Wishlist</a>
+    <%- if librarian_signed_in? %>
+      <%= link_to "Edit Book", edit_book_path(@book), class: "btn wishlist" %>
+    <% else %>
+      <a href="#" class="btn wishlist <%= user_signed_in? ? '': 'disabled'%>">Add to Wishlist</a>
+    <% end %>
   </div>
   <div class="details">
     <div class="title-section">

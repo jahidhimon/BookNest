@@ -8,7 +8,12 @@
 </div>
 
 <div class="section">
-  <div class="section-title"><%= @section_title %></div>
+  <div class="section-title">
+    <div class="title">
+      <%= @section_title %>
+    </div>
+    <%= link_to "New Book", new_book_path %>
+  </div>
 
   <div class="books">
     <%= render @books %>

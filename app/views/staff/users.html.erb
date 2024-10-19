@@ -1,0 +1,22 @@
+<div class="search">
+  <%= form_with url: users_path, method: :get do |form| %>
+    <%= form.text_field :query %>
+    <%= form.button type="submit", name: "commit", value: "search" do %>
+      &#128269;
+    <% end %>
+  <% end %>
+</div>
+
+<div class="section">
+  <div class="section-title">
+    <div class="title"><%= @section_title %></div>
+  </div>
+</div>
+
+<div class="entities">
+  <% @users.each do |user| %>
+    <%= link_to user_path(user), class: "entity" do %>
+        <%= user.name %>
+    <% end %>
+  <% end %>
+</div>

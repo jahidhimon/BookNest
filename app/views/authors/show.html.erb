@@ -1,10 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<div class="author-show">
+  <div class="name">
+    <%= @author.name %>
+  </div>
 
-<%= render @author %>
+  <div class="age"><%= @author.age %> years old</div>
+  <div class="book-count"><%= @author.books.count %></div> books in this library
+  <div class="description"><%= @author.description %></div>
 
-<div>
-  <%= link_to "Edit this author", edit_author_path(@author) %> |
-  <%= link_to "Back to authors", authors_path %>
+  <div class="section">
+    <div class="section-title">
+      <div class="title">
+        His Most Popular Books
+      </div>
+    </div>
 
-  <%= button_to "Destroy this author", @author, method: :delete %>
+    <div class="books">
+      <%= render @books %>
+    </div>
+  </div>
 </div>

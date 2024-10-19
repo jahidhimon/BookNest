@@ -1,10 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<div class="entity-show">
+  <div class="name">
+    <%= @publisher.name %>
+  </div>
 
-<%= render @publisher %>
+  <div class="address"><%= @publisher.address %></div>
+  <div class="book-count"><%= @publisher.books.count %></div> books in this library
+  <div class="description"><%= @publisher.description %></div>
 
-<div>
-  <%= link_to "Edit this publisher", edit_publisher_path(@publisher) %> |
-  <%= link_to "Back to publishers", publishers_path %>
+  <div class="section">
+    <div class="section-title">
+      <div class="title">
+        Their Most Popular Books
+      </div>
+    </div>
 
-  <%= button_to "Destroy this publisher", @publisher, method: :delete %>
+    <div class="books">
+      <%= render @books %>
+    </div>
+  </div>
 </div>

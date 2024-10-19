@@ -1,13 +1,21 @@
 class AuthorsController < ApplicationController
+  before_action :authenticate_librarian!, only: %i[new create edit update destroy]
   before_action :set_author, only: %i[ show edit update destroy ]
 
   # GET /authors or /authors.json
   def index
-    @authors = Author.all
+    if params[:commit] == "search" && params[:query] != ""
+      @section_title = "Showing Results for '#{params[:query]}'"
+      @authors = Author.where("name like ?", "%#{params[:query]}%").order(name: :desc)
+    else
+      @section_title = "All Authors"
+      @authors = Author.all.order(created_at: :desc)
+    end
   end
 
   # GET /authors/1 or /authors/1.json
   def show
+    @books = @author.books.order(visits: :desc)
   end
 
   # GET /authors/new
@@ -58,13 +66,13 @@ class AuthorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_author
-      @author = Author.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_author
+    @author = Author.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def author_params
-      params.require(:author).permit(:name, :age, :description)
-    end
+  # Only allow a list of trusted parameters through.
+  def author_params
+    params.require(:author).permit(:name, :age, :description)
+  end
 end

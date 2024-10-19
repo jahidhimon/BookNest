@@ -32,7 +32,8 @@ body {
 
   footer {
     text-align: center;  
-    border-top: 1px solid var(--olivine);
+    border-top: 1px solid var(--tea-green);
+    margin-top: 40px;
     padding: 10px;
   }
 }
@@ -314,9 +315,25 @@ nav {
   }
 
   & .section-title {
-    padding: 1rem 0;
-    font-size: 1.5rem;
-    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      padding: 1rem 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    a {
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      background-color: var(--tea-green);
+      border-radius: 5px;
+
+      &:hover {
+        background-color: var(--olivine);
+      }
+    }
   }
 }
 
@@ -689,6 +706,14 @@ nav {
   &>* {
     text-align: center;
   }
+  a {
+    text-decoration: none;
+    color: inherit; 
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   .title {
     font-size: 2rem;
@@ -727,3 +752,43 @@ nav {
   }
 }
 
+.entities {
+  display: flex;
+  flex-direction: column;
+
+  .entity + .entity {
+    margin-top: 10px;
+  }
+
+  .entity {
+    text-decoration: none;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--gray-goose);
+  }
+}
+
+.entity-show {
+  .name {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  .age, .address {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-left: 0.3rem;
+  }
+  .book-count {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-left: 0.3rem;
+    display: inline-block;
+  }
+  .description {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-left: 0.3rem;
+    text-wrap: stable; 
+    padding: 1rem 0;
+  }
+}
