@@ -80,7 +80,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (6.2.1)
+    brakeman (6.2.2)
       racc
     builder (3.3.0)
     capybara (3.40.0)
@@ -152,7 +152,6 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    memory_profiler (1.1.0)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.1)
@@ -191,8 +190,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.7)
-    rack-mini-profiler (3.3.1)
-      rack (>= 1.2.0)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -353,9 +350,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
-  memory_profiler
   puma (>= 5.0)
-  rack-mini-profiler
   rails (~> 7.2.1)
   rubocop-rails-omakase
   selenium-webdriver
